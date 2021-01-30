@@ -53,48 +53,54 @@
                  { src: 'IMG_024.jpg', srct: 'IMG_024.jpg', title: 'Title Image 24' }
              ],
 
-              // KEYWORD FILTERING
-              galleryFilterTags: true,
-              galleryFilterTagsMode: 'multiple',
-
               // GALLERY AND THUMBNAIL LAYOUT
-              thumbnailHeight: '300', thumbnailWidth: '300',
-              thumbnailAlignment: 'fillWidth',
-              galleryDisplayMode: 'fullContent',
+              thumbnailHeight: '250', thumbnailWidth: 'auto',
+              galleryDisplayMode: 'pagination',                 // gallery pagination mode
+              galleryMaxRows: 3,                                // gallery with max 3 rows
               gallerySorting: 'random',
-
-              thumbnailGutterWidth: 30, thumbnailGutterHeight: 30,
-              thumbnailBorderHorizontal: 2, thumbnailBorderVertical: 2,
-
-              // DISPLAY ANIMATION
-              galleryDisplayTransitionDuration: 1000,
-              thumbnailDisplayTransition: 'slideRight',
-              thumbnailDisplayTransitionDuration: 300,
-              thumbnailDisplayInterval: 150,
-              thumbnailDisplayOrder: 'colFromRight',
+              thumbnailAlignment: 'fillWidth',
+              thumbnailL1GutterWidth: 20,
+              thumbnailL1GutterHeight: 20,
+              thumbnailBorderHorizontal: 1,
+              thumbnailBorderVertical: 1,
 
               // THUMBNAIL TOOLS & LABEL
-              thumbnailLabel: { display: true, position:'onBottomOverImage', hideIcons: true, titleFontSize: '1em', align: 'left', titleMultiLine:true, displayDescription: false},
-              thumbnailToolbarImage: null,
-              thumbnailToolbarAlbum: null,
+              thumbnailL1Label: { display: true, position:'overImageOnTop', hideIcons: true, titleFontSize: '1.5em', align: 'left'},
+              thumbnailToolbarImage :  { topLeft: 'select', bottomRight : 'featured,display,download,info,cart' },
 
-              // THUMBNAIL HOVER ANIMATION
-              thumbnailHoverEffect2: 'scale110',
+              // DISPLAY ANIMATION
+              thumbnailDisplayTransition: 'flipUp',       // thumbnail display animation
+              thumbnailDisplayTransitionDuration: 400,
+              thumbnailDisplayInterval: 200,
+              thumbnailDisplayOrder: 'rowByRow',
+
+              // THUMBNAIL'S HOVER ANIMATION
+              thumbnailHoverEffect2: 'toolsSlideUp|labelSlideDown',
               touchAnimation: true,
-              touchAutoOpenDelay: 800,
+              touchAutoOpenDelay: -1,
 
               // GALLERY THEME
               galleryTheme : { 
-                thumbnail: { titleShadow : 'none', titleColor: '#fff', borderColor: '#fff' },
-                navigationBreadcrumb: { background : '#3C4B5B' },
-                navigationFilter: { background : '#003C3F', backgroundSelected: '#2E7C7F', color: '#fff' }
+                thumbnail: { titleShadow : 'none', descriptionShadow : 'none', titleColor: '#fff', borderColor: '#fff' },
+                navigationPagination :  { background: '#3C4B5B', color: '#fff', colorHover: '#aaa', borderRadius: '4px' },
               },
+
+              // callback to customize the content of the media info popup
+              fnPopupMediaInfo: my_popup_info,
 
               // DEEP LINKING
               locationHash: false
-            });   
+            });
+        
+            // Function called before the popup for media info is displayed
+            // Content and title can be changed
+            function my_popup_info(item, title, content){
+              var my_title = title + ' <b>nanogallery2</b>';
+              var my_content = content + '<br><br>[The content of this popup can be customized with some javascript.]';
+              return {title: my_title, content: my_content};
+            }
              
-             });
+          });
         </script>
     </body>
 </html>
