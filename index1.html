@@ -1,0 +1,81 @@
+<html>
+  <head>
+      <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+
+      <!-- jQuery -->
+      <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" type="text/javascript"></script>
+
+      <!-- nanogallery2 -->
+      <link  href="https://cdn.jsdelivr.net/npm/nanogallery2@3/dist/css/nanogallery2.min.css" rel="stylesheet" type="text/css">
+      <script  type="text/javascript" src="https://cdn.jsdelivr.net/npm/nanogallery2@3/dist/jquery.nanogallery2.min.js"></script>
+  </head>
+  <body>
+        <h1>gallery made with nanogallery2</h1>
+
+        <!-- ### position of the gallery ### -->
+        <div id="nanogallery2">gallery_made_with_nanogallery2</div>
+
+        <script>
+           jQuery(document).ready(function () {
+             jQuery("#nanogallery2").nanogallery2({
+
+             // CONTENT SOURCE
+             // The optional add-on nanoPhotosProvider is used for this example - this is not mandatory and can easily be replaced by a list of medias
+             kind: 'nano_photos_provider2',
+             itemsBaseURL: 'https://paulwood.github.io/oliviamayart/assets/art/gallery1/',
+             album: 'people',
+
+             items: [
+                 { src: 'VS-2012-5900-2121x1414.jpg', srct: 'VS-2012-5900-2121x1414.jpg', title: 'Title Image 1' },
+             ],
+
+             // GALLERY AND THUMBNAIL LAYOUT
+             thumbnailHeight: '250', thumbnailWidth: 'auto',
+             galleryDisplayMode: 'pagination',                 // gallery pagination mode
+             galleryMaxRows: 3,                                // gallery with max 3 rows
+             gallerySorting: 'random',
+             thumbnailAlignment: 'fillWidth',
+             thumbnailL1GutterWidth: 20,
+             thumbnailL1GutterHeight: 20,
+             thumbnailBorderHorizontal: 1,
+             thumbnailBorderVertical: 1,
+
+             // THUMBNAIL TOOLS & LABEL
+             thumbnailL1Label: { display: true, position:'overImageOnTop', hideIcons: true, titleFontSize: '1.5em', align: 'left'},
+             thumbnailToolbarImage :  { topLeft: 'select', bottomRight : 'featured,display,download,info,cart' },
+
+             // DISPLAY ANIMATION
+             thumbnailDisplayTransition: 'flipUp',       // thumbnail display animation
+             thumbnailDisplayTransitionDuration: 400,
+             thumbnailDisplayInterval: 200,
+             thumbnailDisplayOrder: 'rowByRow',
+
+             // THUMBNAIL'S HOVER ANIMATION
+             thumbnailHoverEffect2: 'toolsSlideUp|labelSlideDown',
+             touchAnimation: true,
+             touchAutoOpenDelay: -1,
+
+             // GALLERY THEME
+             galleryTheme : {
+               thumbnail: { titleShadow : 'none', descriptionShadow : 'none', titleColor: '#fff', borderColor: '#fff' },
+               navigationPagination :  { background: '#3C4B5B', color: '#fff', colorHover: '#aaa', borderRadius: '4px' },
+             },
+
+             // callback to customize the content of the media info popup
+             fnPopupMediaInfo: my_popup_info,
+
+             // DEEP LINKING
+             locationHash: false
+           });
+
+           // Function called before the popup for media info is displayed
+           // Content and title can be changed
+           function my_popup_info(item, title, content){
+             var my_title = title + ' <b>nanogallery2</b>';
+             var my_content = content + '<br><br>[The content of this popup can be customized with some javascript.]';
+             return {title: my_title, content: my_content};
+           }
+         });
+        </script>
+    </body>
+</html>
