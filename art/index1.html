@@ -51,53 +51,48 @@
                  { src: 'IMG_024.jpg', srct: 'IMG_024.jpg', title: 'Title Image 24' }
              ],
 
-             // GALLERY AND THUMBNAIL LAYOUT
-             thumbnailHeight: '250', thumbnailWidth: 'auto',
-             galleryDisplayMode: 'pagination',                 // gallery pagination mode
-             galleryMaxRows: 3,                                // gallery with max 3 rows
-             gallerySorting: 'titleAsc',
-             thumbnailAlignment: 'fillWidth',
-             thumbnailL1GutterWidth: 20,
-             thumbnailL1GutterHeight: 20,
-             thumbnailBorderHorizontal: 1,
-             thumbnailBorderVertical: 1,
+              // KEYWORD FILTERING
+              galleryFilterTags: true,
+              galleryFilterTagsMode: 'multiple',
 
-             // THUMBNAIL TOOLS & LABEL
-             thumbnailL1Label: { display: true, position:'overImageOnTop', hideIcons: true, titleFontSize: '1.5em', align: 'left'},
-             thumbnailToolbarImage :  { topLeft: 'select', bottomRight : 'featured,display,download,info,cart' },
+              // GALLERY AND THUMBNAIL LAYOUT
+              thumbnailHeight: '250', thumbnailWidth: '250',
+              thumbnailAlignment: 'fillWidth',
+              galleryDisplayMode: 'fullContent',
+              gallerySorting: 'random',
 
-             // DISPLAY ANIMATION
-             thumbnailDisplayTransition: 'flipUp',       // thumbnail display animation
-             thumbnailDisplayTransitionDuration: 400,
-             thumbnailDisplayInterval: 200,
-             thumbnailDisplayOrder: 'rowByRow',
+              thumbnailGutterWidth: 10, thumbnailGutterHeight: 10,
+              thumbnailBorderHorizontal: 2, thumbnailBorderVertical: 2,
 
-             // THUMBNAIL'S HOVER ANIMATION
-             thumbnailHoverEffect2: 'scale120|borderLighter',
-             touchAnimation: true,
-             touchAutoOpenDelay: -1,
+              // DISPLAY ANIMATION
+              galleryDisplayTransitionDuration: 1000,
+              thumbnailDisplayTransition: 'slideRight',
+              thumbnailDisplayTransitionDuration: 300,
+              thumbnailDisplayInterval: 150,
+              thumbnailDisplayOrder: 'colFromRight',
 
-             // GALLERY THEME
-             galleryTheme : {
-               thumbnail: { titleShadow : 'none', descriptionShadow : 'none', titleColor: '#fff', borderColor: '#fff' },
-               navigationPagination :  { background: '#3C4B5B', color: '#fff', colorHover: '#aaa', borderRadius: '4px' },
-             },
+              // THUMBNAIL TOOLS & LABEL
+              thumbnailLabel: { display: true, position:'onBottomOverImage', hideIcons: true, titleFontSize: '1em', align: 'left', titleMultiLine:true, displayDescription: false},
+              thumbnailToolbarImage: null,
+              thumbnailToolbarAlbum: null,
 
-             // callback to customize the content of the media info popup
-             fnPopupMediaInfo: my_popup_info,
+              // THUMBNAIL HOVER ANIMATION
+              thumbnailHoverEffect2: 'label_font-size_1em_1.5em|title_backgroundColor_rgba(255,255,255,0.34)_rgba(((35,203,153,0.8)|title_color_#000_#fff|image_scale_1.00_1.10_5000|image_rotateZ_0deg_4deg_5000',
+              touchAnimation: true,
+              touchAutoOpenDelay: 800,
 
-             // DEEP LINKING
-             locationHash: false
-           });
+              // GALLERY THEME
+              galleryTheme : { 
+                thumbnail: { titleShadow : 'none', titleColor: '#fff', borderColor: '#fff' },
+                navigationBreadcrumb: { background : '#3C4B5B' },
+                navigationFilter: { background : '#003C3F', backgroundSelected: '#2E7C7F', color: '#fff' }
+              },
 
-           // Function called before the popup for media info is displayed
-           // Content and title can be changed
-           function my_popup_info(item, title, content){
-             var my_title = title + ' <b>nanogallery2</b>';
-             var my_content = content + '<br><br>[The content of this popup can be customized with some javascript.]';
-             return {title: my_title, content: my_content};
-           }
-         });
+              // DEEP LINKING
+              locationHash: false
+            });   
+             
+             });
         </script>
     </body>
 </html>
