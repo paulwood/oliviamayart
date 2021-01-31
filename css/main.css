@@ -13,16 +13,14 @@ body {
     font-size: 45px;
   }
 
-  .title-red {
-    font-family: fantasy;
-    font-size: 45px;
-    color: red;
-  }
-
   .sub-title {
     font-size: 25px;
     padding: 20px;
     color: #ccc;
+  }
+
+  .thumbnail-title {
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   }
 
   .footer {
